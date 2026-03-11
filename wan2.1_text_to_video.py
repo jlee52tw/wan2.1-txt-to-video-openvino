@@ -186,7 +186,7 @@ Examples:
     )
     parser.add_argument("--height", type=int, default=480, help="Video height (default: 480)")
     parser.add_argument("--width", type=int, default=832, help="Video width (default: 832)")
-    parser.add_argument("--num-frames", type=int, default=20, help="Number of frames (default: 20)")
+    parser.add_argument("--num-frames", type=int, default=53, help="Number of frames (default: 53, ~5.3s at 10fps)")
     parser.add_argument("--num-steps", type=int, default=4, help="Inference steps (default: 4, CausVid distilled)")
     parser.add_argument("--guidance-scale", type=float, default=1.0, help="Guidance scale (default: 1.0)")
     parser.add_argument("--output", type=str, default="output.mp4", help="Output video path (default: output.mp4)")

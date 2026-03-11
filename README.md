@@ -127,7 +127,7 @@ Options:
   --negative-prompt Negative prompt
   --height          Video height in pixels (default: 480)
   --width           Video width in pixels (default: 832)
-  --num-frames      Number of frames to generate (default: 20)
+  --num-frames      Number of frames to generate (default: 53, ~5.3s at 10fps)
   --num-steps       Number of inference steps (default: 4)
   --guidance-scale  Classifier-free guidance scale (default: 1.0)
   --output          Output video file path (default: output.mp4)
@@ -135,15 +135,15 @@ Options:
 
 ## CPU vs iGPU Performance
 
-Benchmark on Intel Core Ultra (20 frames, 480×832, 4 steps, INT4):
+Benchmark on Intel Core Ultra (53 frames / 5.3s video, 480×832, 4 steps, INT4):
 
 | | **iGPU** (`--device GPU`) | **CPU** (`--device CPU`) |
 |---|---|---|
-| Denoising (4 steps) | ~9.5s (~2.4s/step) | ~342s (~85.7s/step) |
-| Total wall time | ~126s (incl. model loading) | ~360s+ |
-| **Speedup** | **~36x faster** | baseline |
+| Denoising (4 steps) | ~42s (~10.6s/step) | ~1427s (~357s/step) |
+| Total wall time | ~386s (incl. model loading) | ~1813s (~30 min) |
+| **Speedup** | **~34x faster** | baseline |
 
-> **Note:** The first iGPU run includes ~110s of model loading and GPU graph compilation overhead. Subsequent runs in the same process would be faster. The denoising itself is only ~9.5s on iGPU vs ~342s on CPU.
+> **Note:** The first iGPU run includes GPU graph compilation overhead. Subsequent runs in the same process would be faster. The denoising itself is only ~42s on iGPU vs ~1427s on CPU.
 
 ### Why VAE runs on CPU
 
@@ -151,21 +151,21 @@ The VAE decoder triggers a `CL_INVALID_WORK_GROUP_SIZE` error on some Intel iGPU
 
 ## Sample Output
 
-Prompt: *"A cat walks on the grass, realistic"* — 20 frames, 480×832, 4 steps, INT4
+Prompt: *"A cat walks on the grass, realistic"* — 53 frames, 480×832, 4 steps, INT4
 
-### iGPU Result (~9.5s denoising)
+### iGPU Result (~42s denoising)
 
-https://github.com/jlee52tw/wan2.1-txt-to-video-openvino/raw/main/samples/output_igpu.mp4
+https://github.com/jlee52tw/wan2.1-txt-to-video-openvino/raw/main/samples/output_igpu_5s.mp4
 
-### CPU Result (~342s denoising)
+### CPU Result (~1427s denoising)
 
-https://github.com/jlee52tw/wan2.1-txt-to-video-openvino/raw/main/samples/output_cpu.mp4
+https://github.com/jlee52tw/wan2.1-txt-to-video-openvino/raw/main/samples/output_cpu_5s.mp4
 
 ## Output Details
 
 - **Video format:** MP4, 10 FPS
 - **Default resolution:** 832×480
-- **Default length:** 17 frames → **1.7 seconds** of video (from 20 input frames, adjusted to VAE temporal scale factor)
+- **Default length:** 53 frames → **5.3 seconds** of video
 
 ## Files
 
