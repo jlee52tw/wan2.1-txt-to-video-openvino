@@ -155,15 +155,11 @@ Prompt: *"A cat walks on the grass, realistic"* — 20 frames, 480×832, 4 steps
 
 ### iGPU Result (~9.5s denoising)
 
-https://github.com/user-attachments/assets/output_igpu.mp4
-
-<video src="samples/output_igpu.mp4" controls width="640"></video>
+https://github.com/jlee52tw/wan2.1-txt-to-video-openvino/raw/main/samples/output_igpu.mp4
 
 ### CPU Result (~342s denoising)
 
-https://github.com/user-attachments/assets/output_cpu.mp4
-
-<video src="samples/output_cpu.mp4" controls width="640"></video>
+https://github.com/jlee52tw/wan2.1-txt-to-video-openvino/raw/main/samples/output_cpu.mp4
 
 ## Output Details
 
