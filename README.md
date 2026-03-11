@@ -149,7 +149,23 @@ Benchmark on Intel Core Ultra (20 frames, 480×832, 4 steps, INT4):
 
 The VAE decoder triggers a `CL_INVALID_WORK_GROUP_SIZE` error on some Intel iGPUs. Since the VAE is only called **once** at the end to decode latents into video frames, running it on CPU has minimal impact on total generation time. The transformer (the performance-critical component running 4 denoising steps) runs on iGPU where it matters most.
 
-## Output
+## Sample Output
+
+Prompt: *"A cat walks on the grass, realistic"* — 20 frames, 480×832, 4 steps, INT4
+
+### iGPU Result (~9.5s denoising)
+
+https://github.com/user-attachments/assets/output_igpu.mp4
+
+<video src="samples/output_igpu.mp4" controls width="640"></video>
+
+### CPU Result (~342s denoising)
+
+https://github.com/user-attachments/assets/output_cpu.mp4
+
+<video src="samples/output_cpu.mp4" controls width="640"></video>
+
+## Output Details
 
 - **Video format:** MP4, 10 FPS
 - **Default resolution:** 832×480

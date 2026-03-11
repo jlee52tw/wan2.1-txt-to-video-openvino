@@ -5,6 +5,7 @@ Wan2.1-T2V-1.3B-Diffusers/
 
 # Generated videos
 *.mp4
+!samples/*.mp4
 
 # Python
 __pycache__/
