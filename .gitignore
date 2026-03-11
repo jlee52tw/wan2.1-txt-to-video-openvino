@@ -1,0 +1,28 @@
+# Model files (large, not committed)
+Wan2.1-T2V-1.3B-Diffusers/
+*.bin
+*.xml
+
+# Generated videos
+*.mp4
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+wan2.1-venv/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
